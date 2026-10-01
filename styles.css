@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamma Blast Finder</title>
+    <meta
+      name="description"
+      content="Gamma Blast stock and index finder dashboard for identifying high-convexity momentum opportunities."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">G</div>
+        <div>
+          <p class="eyebrow">Options intelligence</p>
+          <h1>Gamma Blast</h1>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#screen">Screen</a>
+        <a href="#watchlist">Watchlist</a>
+        <a href="#signals">Signals</a>
+        <a href="#market-map">Market map</a>
+      </nav>
+      <button class="primary-btn">Live Scan</button>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="tag">High-convexity opportunities</p>
+          <h2>Find the stocks and indices with the strongest gamma momentum.</h2>
+          <p class="muted">
+            Track gamma-heavy names, index leaders, and trend breakouts across U.S.
+            equities with a scanner built for fast options conviction.
+          </p>
+          <div class="search-panel">
+            <div class="search-box">
+              <span class="search-icon">⌕</span>
+              <input id="searchInput" type="text" placeholder="Search ticker, name, or index" />
+            </div>
+            <button id="scanButton" class="primary-btn">Scan now</button>
+          </div>
+          <div class="chip-row">
+            <span class="chip active">All</span>
+            <span class="chip">Stocks</span>
+            <span class="chip">Indexes</span>
+            <span class="chip">Breakouts</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="screen">
+          <div class="signal-card large">
+            <div class="card-head">
+              <span>Gamma energy</span>
+              <span class="status positive">Bullish</span>
+            </div>
+            <div class="large-score">96</div>
+            <div class="sparkline">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="mini-metrics">
+              <div>
+                <small>Volume</small>
+                <strong>1.8x</strong>
+              </div>
+              <div>
+                <small>Delta</small>
+                <strong>0.64</strong>
+              </div>
+              <div>
+                <small>Gamma</small>
+                <strong>1.22</strong>
+              </div>
+            </div>
+          </div>
+          <div class="mini-stack">
+            <div class="signal-card small">
+              <small>Nasdaq 100</small>
+              <strong>+1.8%</strong>
+              <span>Gamma signal</span>
+            </div>
+            <div class="signal-card small cyan">
+              <small>SPX</small>
+              <strong>+0.9%</strong>
+              <span>Momentum</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid" id="signals">
+        <article class="stat-card">
+          <p>Best gamma name</p>
+          <h3>NVDA</h3>
+          <span class="positive">+2.4%</span>
+        </article>
+        <article class="stat-card">
+          <p>Index leader</p>
+          <h3>QQQ</h3>
+          <span class="positive">+1.8%</span>
+        </article>
+        <article class="stat-card">
+          <p>High conviction</p>
+          <h3>42 setups</h3>
+          <span class="positive">Above trend</span>
+        </article>
+        <article class="stat-card">
+          <p>Market breadth</p>
+          <h3>68%</h3>
+          <span class="neutral">Risk-on</span>
+        </article>
+      </section>
+
+      <section class="finder-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Opportunity finder</p>
+            <h3>Gamma blast scanner</h3>
+          </div>
+          <div class="toolbar">
+            <select id="typeFilter">
+              <option value="all">All assets</option>
+              <option value="Stock">Stocks</option>
+              <option value="Index">Indexes</option>
+            </select>
+            <select id="sortFilter">
+              <option value="gamma">Sort by gamma</option>
+              <option value="change">Sort by change</option>
+              <option value="name">Sort by name</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="resultsContainer" class="results-grid"></div>
+      </section>
+
+      <section class="lower-grid">
+        <div class="panel" id="watchlist">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Watchlist</p>
+              <h4>Priority names</h4>
+            </div>
+            <button class="ghost-btn">Add alert</button>
+          </div>
+          <ul id="watchlistItems" class="watchlist"></ul>
+        </div>
+
+        <div class="panel" id="market-map">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Market map</p>
+              <h4>Sector gamma heat</h4>
+            </div>
+          </div>
+          <div class="heatmap">
+            <div class="heat-row">
+              <span>Semis</span>
+              <div class="bar bar-9"><i>92</i></div>
+            </div>
+            <div class="heat-row">
+              <span>Tech</span>
+              <div class="bar bar-8"><i>88</i></div>
+            </div>
+            <div class="heat-row">
+              <span>Energy</span>
+              <div class="bar bar-6"><i>64</i></div>
+            </div>
+            <div class="heat-row">
+              <span>Finance</span>
+              <div class="bar bar-7"><i>72</i></div>
+            </div>
+            <div class="heat-row">
+              <span>Healthcare</span>
+              <div class="bar bar-5"><i>56</i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
